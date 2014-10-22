@@ -1,0 +1,17 @@
+{
+    "name": "def/event",
+    "description": "simple event dispatcher",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "andrew-kamenchuk",
+            "email": "andrew.kamenchuk@gmail.com"
+        }
+    ],
+    "require": {
+			"php": ">=5.4"
+    },
+    "autoload" : {
+			"psr-4" : {"def\\Event\\":""}
+    }
+}
