@@ -3,19 +3,7 @@ namespace def\Event;
 
 class Dispatcher
 {
-	protected $source;
-
 	protected $listeners = [];
-
-	public function __construct($source)
-	{
-		$this->source = $source;
-	}
-
-	public function source()
-	{
-		return $this->source;
-	}
 	
 	public function attach($event, callable $listener)
 	{
@@ -30,7 +18,7 @@ class Dispatcher
 	{
 		if(!isset($listener)) {
 			unset($this->listeners[$event]);
-		} elseif(isset($this->listeners[$event]) && false !== $key = \array_search($listener, $this->listeners[$event])) {
+		} elseif(isset($this->listeners[$event]) && false !== $key = \array_search($listener, $this->listeners[$event], true)) {
 			unset($this->listeners[$event][$key]);
 		}
 	}
@@ -43,7 +31,7 @@ class Dispatcher
 	public function dispatch($event, array $args = [])
 	{
 		foreach($this->listeners($event) as $listener) {
-			$listener($this->source, $args, $event);
+			call_user_func_array($event, $args);
 		}
 	}
 
