@@ -7,10 +7,6 @@ class Dispatcher
 	
 	public function attach($event, callable $listener)
 	{
-		if(!isset($this->listeners[$event])) {
-			$this->listeners[$event] = [];
-		}
-
 		$this->listeners[$event][] = $listener;
 	}
 
@@ -28,10 +24,12 @@ class Dispatcher
 		return isset($this->listeners[$event]) ? $this->listeners[$event] : [];
 	}
 
-	public function dispatch($event, array $args = [])
+	public function dispatch($event)
 	{
+		$args = \array_slice(\func_get_args(), 1);
+
 		foreach($this->listeners($event) as $listener) {
-			call_user_func_array($event, $args);
+			call_user_func_array($listener, $args);
 		}
 	}
 
