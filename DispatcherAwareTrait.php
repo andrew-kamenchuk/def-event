@@ -7,7 +7,6 @@ trait DispatcherAwareTrait
 
 	public function dispatcher(Dispatcher $dispatcher = null)
 	{
-		return 0 == \func_num_args() ? ($this->dispatcher ?: $this->dispatcher = new Dispatcher)
-		                             :  $this->dispatcher = $dispatcher;
+		return \func_num_args() ? ($this->dispatcher = $dispatcher) : ($this->dispatcher ?: $this->dispatcher = new Dispatcher);
 	}
 }

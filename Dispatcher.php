@@ -24,12 +24,10 @@ class Dispatcher
 		return isset($this->listeners[$event]) ? $this->listeners[$event] : [];
 	}
 
-	public function dispatch($event)
+	public function dispatch($event, ...$args)
 	{
-		$args = \array_slice(\func_get_args(), 1);
-
 		foreach($this->listeners($event) as $listener) {
-			call_user_func_array($listener, $args);
+			$listener($event, ...$args);
 		}
 	}
 
