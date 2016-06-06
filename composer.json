@@ -1,6 +1,6 @@
 {
     "name": "def/event",
-    "description": "simple event dispatcher",
+    "description": "simple php event dispatcher",
     "license": "MIT",
     "authors": [
         {

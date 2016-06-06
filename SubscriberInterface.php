@@ -3,8 +3,8 @@ namespace def\Event;
 
 interface SubscriberInterface
 {
-	/**
-	 * @return array
-	 */
-	public function subscribed();
+    /**
+     * @return string[] event method map
+     */
+    public function events();
 }
