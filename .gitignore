@@ -4,3 +4,6 @@ vendor/
 
 # ctags
 tags
+
+# for tests
+index.php
