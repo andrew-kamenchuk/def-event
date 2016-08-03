@@ -18,7 +18,7 @@ class Dispatcher
         if (!isset($listener)) {
             unset($this->listeners[$event]);
         } elseif (isset($this->listeners[$event])
-               && false !== $key = \array_search($listener, $this->listeners[$event], true)) {
+               && false !== $key = array_search($listener, $this->listeners[$event], true)) {
             unset($this->listeners[$event][$key]);
         }
     }
@@ -37,7 +37,7 @@ class Dispatcher
 
     public function events()
     {
-        return \array_keys($this->listeners);
+        return array_keys($this->listeners);
     }
 
     public function subscribe(SubscriberInterface $subscriber)
